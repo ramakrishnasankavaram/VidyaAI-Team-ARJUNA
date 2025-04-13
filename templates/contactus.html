@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - VidyaAi++</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <h1><img src="static/images/vidyaailogo.jpg" alt="" style="width: 30px; height: 30px; border-radius: 100px;"> <a href="/Home" style="color: white;">VidyaAI++</a></h1>
+        <ul>
+            <li><a href="/Home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/mentors"><i class="fas fa-chalkboard-teacher"></i> Mentors</a></li>
+            <li><a href="/relatedvideos"><i class="fas fa-video"></i> Courses</a></li>
+            <li><a href="/aboutus"><i class="fas fa-info-circle"></i> About us</a></li>
+            <li><a href="/contactus"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, feedback, or suggestions — we’d love to hear from you!</p>
+
+        {% if success %}
+            <div class="success-message">Message sent successfully!</div>
+        {% endif %}
+
+        <form method="post" class="contact-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="social-icons">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+</body>
+</html>

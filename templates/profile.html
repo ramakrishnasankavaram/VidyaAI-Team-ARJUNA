@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile - VidyaAI++</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Internal styling based on theme */
+        .profile-container {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .profile-header {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-cover {
+            height: 200px;
+            width: 100%;
+            background: linear-gradient(135deg, #004080 0%, #0066cc 100%);
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            background-color: white;
+            position: absolute;
+            bottom: -75px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            padding: 85px 30px 30px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .profile-info h1 {
+            color: #004080;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        .user-email, .user-role {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .user-role {
+            font-weight: bold;
+            color: #004080;
+        }
+
+        .edit-profile-btn {
+            display: inline-block;
+            background-color: #004080;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .edit-profile-btn:hover {
+            background-color: #0066cc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 64, 128, 0.2);
+        }
+
+        .edit-profile-btn i {
+            margin-right: 5px;
+        }
+
+        .profile-content {
+            padding: 30px;
+        }
+
+        .profile-section {
+            margin-bottom: 30px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e6ecf2;
+            padding-bottom: 10px;
+        }
+
+        .section-header i {
+            color: #004080;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .section-header h2 {
+            color: #004080;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .section-content {
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .detail-item {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            width: 130px;
+            color: #555;
+        }
+
+        .detail-value {
+            flex: 1;
+        }
+
+        .interests-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .interest-tag {
+            background-color: #e1effe;
+            color: #004080;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            flex: 1;
+            text-align: center;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 0 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #004080;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .progress-message {
+            display: flex;
+            align-items: center;
+            background-color: #f0f7ff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 4px solid #004080;
+        }
+
+        .progress-message i {
+            color: #004080;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .progress-message p {
+            margin: 0;
+            color: #555;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            max-width: 90%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .modal.show {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .modal-header {
+            background-color: #004080;
+            color: white;
+            padding: 15px 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: white;
+        }
+
+        .modal-body {
+            padding: 20px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <h1><img src="static/images/vidyaailogo.jpg" alt="" style="width: 30px; height: 30px; border-radius: 100px;"> <a href="/Home" style="color: white;">VidyaAI++</a></h1>
+        <ul>
+            <li><a href="/Home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/mentors"><i class="fas fa-chalkboard-teacher"></i> Mentors</a></li>
+            <li><a href="/relatedvideos"><i class="fas fa-video"></i> Courses</a></li>
+            <li><a href="/aboutus"><i class="fas fa-info-circle"></i> About us</a></li>
+            <li><a href="/contactus"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+          <ul>  
+            <!-- User Profile Dropdown -->
+            <li class="user-dropdown">
+                <a href="#" id="userDropdownToggle">
+                    <i class="fas fa-user-circle"></i> {{ session['user'][2] }}
+                </a>
+                <div class="dropdown-content" id="userDropdown">
+                    <div class="dropdown-links">
+                        <a href="/profile"><i class="fas fa-id-card"></i> View Profile</a>
+                        <a href="/edit-profile"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                        <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-cover">
+                <div class="profile-avatar">
+                    <img src="static/images/member1.jpg" alt="Profile Picture">
+                </div>
+            </div>
+            <div class="profile-info">
+                <h1>{{ session['user'][1] }}</h1>
+                <p class="user-email">{{ session['user'][2] }}</p>
+                <p class="user-role">{{ session['user'][4] }}</p>
+                <!-- <a href="/edit-profile" class="edit-profile-btn">
+                    <i class="fas fa-user-edit"></i> Edit Profile
+                </a> -->
+            </div>
+        </div>
+        
+        <div class="profile-content">
+            <div class="profile-section">
+                <div class="section-header">
+                    <i class="fas fa-user"></i>
+                    <h2>About Me</h2>
+                </div>
+                <div class="section-content">
+                    <p>{{ user_details['bio'] if user_details['bio'] else 'No bio information provided yet.' }}</p>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <div class="section-header">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h2>Education Details</h2>
+                </div>
+                <div class="section-content">
+                    <div class="detail-item">
+                        <span class="detail-label">Grade/Class:</span>
+                        <span class="detail-value">{{ user_details['grade'] if user_details['grade'] else 'Not specified' }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">School:</span>
+                        <span class="detail-value">{{ user_details['school'] if user_details['school'] else 'Not specified' }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <div class="section-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Interests</h2>
+                </div>
+                <div class="section-content">
+                    {% if user_details['interests'] %}
+                        <div class="interests-tags">
+                            {% for interest in user_details['interests'].split(',') %}
+                                <span class="interest-tag">{{ interest.strip() }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>No interests specified yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <div class="section-header">
+                    <i class="fas fa-language"></i>
+                    <h2>Preferred Language</h2>
+                </div>
+                <div class="section-content">
+                    <p>{{ user_details['language'] if user_details['language'] else 'English' }}</p>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <div class="section-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>Learning Progress</h2>
+                </div>
+                <div class="section-content">
+                    <div class="progress-stats">
+                        <div class="stat-card">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Courses Completed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Hours Spent</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Badges Earned</div>
+                        </div>
+                    </div>
+                    <div class="progress-message">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Start learning to track your progress!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chatbot Icon -->
+    <div class="chatbot-icon" id="chatbotIcon">
+        <i class="fas fa-robot"></i>
+    </div>
+    
+    <!-- Universal Chat Icon -->
+    <div class="universal-chat-icon" id="universalChatIcon">
+        <i class="fas fa-comments"></i>
+        <span class="chat-notification">3</span>
+    </div>
+    
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <span>VidyaAI++ Assistant</span>
+            <button class="close-btn" id="closeChatbot"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chatbot-content">
+            <div class="chatbot-placeholder">
+                <img src="{{ url_for('static', filename='images/vidyaailogo.jpg') }}" alt="VidyaAI Logo" class="chatbot-logo">
+                <h2>Welcome to VidyaAI++ Assistant</h2>
+                <p>Your AI-powered education companion is here to help you learn better.</p>
+                <p>Click the button below to start your personalized learning experience:</p>
+                <a href="https://huggingface.co/spaces/SwamiSivaRamaRaju/VidyaA-ChatBot" target="_blank" class="chatbot-button">
+                    Launch AI Tutor <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Universal Chat Container -->
+    <div class="universal-chat-container" id="universalChatContainer">
+        <div class="chat-header">
+            <span>VidyaAI++ Community Chat</span>
+            <button class="close-btn" id="closeUniversalChat"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-users-list">
+            <div class="chat-user online">
+                <img src="{{ url_for('static', filename='images/avatar1.jpg') }}" alt="User" class="user-avatar">
+                <span class="user-name">Rahul S.</span>
+                <span class="user-status"></span>
+            </div>
+            <div class="chat-user online">
+                <img src="{{ url_for('static', filename='images/avatar2.jpg') }}" alt="User" class="user-avatar">
+                <span class="user-name">Priya M.</span>
+                <span class="user-status"></span>
+            </div>
+            <div class="chat-user">
+                <img src="{{ url_for('static', filename='images/avatar3.jpg') }}" alt="User" class="user-avatar">
+                <span class="user-name">Amit K.</span>
+                <span class="user-status offline"></span>
+            </div>
+        </div>
+        <div class="chat-messages">
+            <div class="message received">
+                <img src="{{ url_for('static', filename='images/avatar1.jpg') }}" alt="User" class="message-avatar">
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="message-author">Rahul S.</span>
+                        <span class="message-time">10:25 AM</span>
+                    </div>
+                    <p>Has anyone completed the Math assignment yet?</p>
+                </div>
+            </div>
+            <div class="message received">
+                <img src="{{ url_for('static', filename='images/avatar2.jpg') }}" alt="User" class="message-avatar">
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="message-author">Priya M.</span>
+                        <span class="message-time">10:27 AM</span>
+                    </div>
+                    <p>Yes, I found question #3 difficult. Did you understand it?</p>
+                </div>
+            </div>
+            <div class="message sent">
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="message-author">You</span>
+                        <span class="message-time">10:30 AM</span>
+                    </div>
+                    <p>I'm still working on it. Maybe we can discuss after school?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" placeholder="Type your message here..." class="chat-input">
+            <button class="send-button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Overlay background -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- User Profile Edit Modal -->
+    <div class="modal" id="profileEditModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="close-btn" id="closeProfileModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="profileEditForm" action="/update-profile" method="POST">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="name" value="{{ session['user'][1] }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="{{ session['user'][2] }}" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="grade">Grade/Class</label>
+                        <select id="grade" name="grade">
+                            <option value="1st" {% if user_details and user_details['grade'] == '1st' %}selected{% endif %}>1st Grade</option>
+                            <option value="2nd" {% if user_details and user_details['grade'] == '2nd' %}selected{% endif %}>2nd Grade</option>
+                            <option value="3rd" {% if user_details and user_details['grade'] == '3rd' %}selected{% endif %}>3rd Grade</option>
+                            <option value="4th" {% if user_details and user_details['grade'] == '4th' %}selected{% endif %}>4th Grade</option>
+                            <option value="5th" {% if user_details and user_details['grade'] == '5th' %}selected{% endif %}>5th Grade</option>
+                            <option value="6th" {% if user_details and user_details['grade'] == '6th' %}selected{% endif %}>6th Grade</option>
+                            <option value="7th" {% if user_details and user_details['grade'] == '7th' %}selected{% endif %}>7th Grade</option>
+                            <option value="8th" {% if user_details and user_details['grade'] == '8th' %}selected{% endif %}>8th Grade</option>
+                            <option value="9th" {% if user_details and user_details['grade'] == '9th' %}selected{% endif %}>9th Grade</option>
+                            <option value="10th" {% if user_details and user_details['grade'] == '10th' %}selected{% endif %}>10th Grade</option>
+                            <option value="11th" {% if user_details and user_details['grade'] == '11th' %}selected{% endif %}>11th Grade</option>
+                            <option value="12th" {% if user_details and user_details['grade'] == '12th' %}selected{% endif %}>12th Grade</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="school">School Name</label>
+                        <input type="text" id="school" name="school" value="{{ user_details['school'] if user_details else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="interests">Interests/Subjects</label>
+                        <input type="text" id="interests" name="interests" value="{{ user_details['interests'] if user_details else '' }}" placeholder="Math, Science, Arts, etc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Preferred Language</label>
+                        <select id="language" name="language">
+                            <option value="English" {% if user_details and user_details['language'] == 'English' %}selected{% endif %}>English</option>
+                            <option value="Hindi" {% if user_details and user_details['language'] == 'Hindi' %}selected{% endif %}>Hindi</option>
+                            <option value="Tamil" {% if user_details and user_details['language'] == 'Tamil' %}selected{% endif %}>Tamil</option>
+                            <option value="Telugu" {% if user_details and user_details['language'] == 'Telugu' %}selected{% endif %}>Telugu</option>
+                            <option value="Kannada" {% if user_details and user_details['language'] == 'Kannada' %}selected{% endif %}>Kannada</option>
+                            <option value="Malayalam" {% if user_details and user_details['language'] == 'Malayalam' %}selected{% endif %}>Malayalam</option>
+                            <option value="Bengali" {% if user_details and user_details['language'] == 'Bengali' %}selected{% endif %}>Bengali</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">About Me</label>
+                        <textarea id="bio" name="bio" rows="3" placeholder="Tell us about yourself...">{{ user_details['bio'] if user_details else '' }}</textarea>
+                    </div>
+                    <button type="submit" class="auth-button">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chatbot functionality
+            const chatbotIcon = document.getElementById('chatbotIcon');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const closeChatbot = document.getElementById('closeChatbot');
+            const universalChatIcon = document.getElementById('universalChatIcon');
+            const universalChatContainer = document.getElementById('universalChatContainer');
+            const closeUniversalChat = document.getElementById('closeUniversalChat');
+            const overlay = document.getElementById('overlay');
+            const chatInput = document.querySelector('.chat-input');
+            const sendButton = document.querySelector('.send-button');
+            
+            // User dropdown functionality
+            const userDropdownToggle = document.getElementById('userDropdownToggle');
+            const userDropdown = document.getElementById('userDropdown');
+            
+            if (userDropdownToggle) {
+                userDropdownToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    userDropdown.classList.toggle('show');
+                });
+            }
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.user-dropdown') && userDropdown.classList.contains('show')) {
+                    userDropdown.classList.remove('show');
+                }
+            });
+            
+            // Edit Profile Modal
+            const editProfileLink = document.querySelector('a[href="/edit-profile"]');
+            const profileEditModal = document.getElementById('profileEditModal');
+            const closeProfileModal = document.getElementById('closeProfileModal');
+            
+            if (editProfileLink) {
+                editProfileLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    profileEditModal.classList.add('show');
+                    overlay.classList.add('active');
+                });
+            }
+            
+            if (closeProfileModal) {
+                closeProfileModal.addEventListener('click', function() {
+                    profileEditModal.classList.remove('show');
+                    overlay.classList.remove('active');
+                });
+            }
+            
+            chatbotIcon.addEventListener('click', function() {
+                chatbotContainer.classList.add('show');
+                universalChatContainer.classList.remove('show');
+                profileEditModal.classList.remove('show');
+                overlay.classList.add('active');
+            });
+            
+            closeChatbot.addEventListener('click', function() {
+                chatbotContainer.classList.remove('show');
+                overlay.classList.remove('active');
+            });
+            
+            universalChatIcon.addEventListener('click', function() {
+                universalChatContainer.classList.add('show');
+                chatbotContainer.classList.remove('show');
+                profileEditModal.classList.remove('show');
+                overlay.classList.add('active');
+                // Remove notification when user opens chat
+                const notification = document.querySelector('.chat-notification');
+                if (notification) {
+                    notification.style.display = 'none';
+                }
+            });
+            
+            closeUniversalChat.addEventListener('click', function() {
+                universalChatContainer.classList.remove('show');
+                overlay.classList.remove('active');
+            });
+            
+            overlay.addEventListener('click', function() {
+                chatbotContainer.classList.remove('show');
+                universalChatContainer.classList.remove('show');
+                profileEditModal.classList.remove('show');
+                overlay.classList.remove('active');
+            });
+            
+            // Send message functionality
+            function sendMessage() {
+                const messageText = chatInput.value.trim();
+                if (messageText !== '') {
+                    const chatMessages = document.querySelector('.chat-messages');
+                    const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    
+                    const messageHTML = `
+                        <div class="message sent">
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-author">You</span>
+                                    <span class="message-time">${currentTime}</span>
+                                </div>
+                                <p>${messageText}</p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    chatMessages.insertAdjacentHTML('beforeend', messageHTML);
+                    chatInput.value = '';
+                    
+                    // Scroll to the bottom of chat
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            }
+            
+            if (sendButton) {
+                sendButton.addEventListener('click', sendMessage);
+            }
+            
+            if (chatInput) {
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            }
+            
+            // User list interaction
+            const chatUsers = document.querySelectorAll('.chat-user');
+            chatUsers.forEach(user => {
+                user.addEventListener('click', function() {
+                    chatUsers.forEach(u => u.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+        });
+    </script>
+    
+    <footer style="text-align: center; padding: 20px; background-color: #004080; color: white;">
+        &copy; 2025 VidyaAI++. Built with ❤️ by Team ARJUNA.
+    </footer>
+</body>
+</html>

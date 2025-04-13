@@ -1,0 +1,19 @@
+<!-- templates/verify.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Verification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Verify Your Email</h2>
+        <form method="POST" action="/verify">
+            <label for="otp">Enter OTP sent to your email:</label>
+            <input type="text" id="otp" name="otp" required>
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+</body>
+</html>

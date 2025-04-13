@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-image: url('static/images/poorman2.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+      <h1><img src="static/images/vidyaailogo.jpg" alt="" style="width: 30px; height: 30px; border-radius: 100px;"> <a href="/Home" style="color: white;">VidyaAI++</a></h1>
+        <ul>
+            <li><a href="/Home">Home</a></li>
+            <li><a href="/mentors">Mentors</a></li>
+            <li><a href="/relatedvideos">Related videos</a></li>
+            <li><a href="/aboutus">About us</a></li>
+            <li><a href="/contactus">Contact Us</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>You have successfully logged in as {{ user[4].capitalize() }}</h2>
+        <p>Your email: {{ user[2] }}</p>
+    </div>
+</body>
+</html>

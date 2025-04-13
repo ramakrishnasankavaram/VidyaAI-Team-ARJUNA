@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - VidyaAi++</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <h1><img src="static/images/vidyaailogo.jpg" alt="" style="width: 30px; height: 30px; border-radius: 100px;"> <a href="/Home" style="color: white;">VidyaAI++</a></h1>
+        <ul>
+            <li><a href="/Home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/mentors"><i class="fas fa-chalkboard-teacher"></i> Mentors</a></li>
+            <li><a href="/relatedvideos"><i class="fas fa-video"></i> Courses</a></li>
+            <li><a href="/aboutus"><i class="fas fa-info-circle"></i> About us</a></li>
+            <li><a href="/contactus"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>About Us</h2>
+        <p>
+            At VidyaAI++, we believe that quality education should be accessible to every student, regardless of their background or language. Our mission is to bridge the learning gap for students from Below Poverty Line (BPL) government schools by offering a multilingual AI-powered tutoring and mentorship platform.
+
+            <p>We aim to create a supportive and personalized educational environment where students can learn in their native language, connect with mentors, track their progress, and feel confident on their academic journey.
+            </p>
+            <p>Our platform integrates cutting-edge technologies like AI-driven chatbots, adaptive learning modules, vision-based emotion tracking, and gamification to make learning more engaging and impactful.
+            </p>
+             <p>We are a team of passionate students committed to driving educational inclusion through innovation.
+             </p>
+            
+        </p>
+
+        <h2>Our Team</h2>
+        <div class="team-row">
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/member3.jpeg') }}" alt="Meghana">
+                <p>S.Dasaradharami Reddy</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/member1.jpg') }}" alt="Ram Krishna">
+                <p>S.Ram Krishna</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/member2.jpg') }}" alt="Charan">
+                <p>G.Swami Siva Rama Raju</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/member4.jpeg') }}" alt="Karthik">
+                <p>V.Siva Mohan Yadav</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
