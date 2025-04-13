@@ -1,4 +1,10 @@
-# VidyaAI++  : 🎓 AI-Powered Student Learning Assistant
+# VidyaAI++  : 🎓 AI-Powered Student Learning Assistant    
+
+## 🚀 Deployment
+
+Check out the live application here:  
+👉 [Live Site](https://vidyaai-team-arjuna.onrender.com)
+
 
 ## Selected Domain : AI&ML
 
