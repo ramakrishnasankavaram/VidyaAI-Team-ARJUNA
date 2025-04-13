@@ -38,6 +38,12 @@ To overcome the challenges We are going to develop a comprehensive web platform 
 
 ---
 
+## Our Homepage Demo
+![VidyAI++ Screenshot](demohomepage.png)
+
+
+---
+
 ## 🛠 Tech Stack Used
 
 - *Frontend* : HTML, CSS, JavaScript, Bootstrap  
