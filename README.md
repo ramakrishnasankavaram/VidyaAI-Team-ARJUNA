@@ -56,9 +56,6 @@ To overcome the challenges We are going to develop a comprehensive web platform 
 - 📈 *Analytics & Reports*  
   Visualize student progress, quiz scores, and engagement with learning material.
 
-- 🧩 *Gamification Elements*  
-  Points, badges, and leaderboards to encourage continued learning and interaction.
-
 - 👩‍🏫 *Live Chat with AI Teacher*  
   Real-time interaction with AI for immediate query resolution.
 
