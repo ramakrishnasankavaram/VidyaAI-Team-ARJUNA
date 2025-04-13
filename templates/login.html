@@ -19,8 +19,8 @@
             
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                    <div class="flash-message error">
-                        <i class="fas fa-exclamation-circle"></i>
+                    <div class="flash-message success">
+                        <i class="fas fa-check-circle"></i>
                         {{ messages[0] }}
                     </div>
                 {% endif %}
