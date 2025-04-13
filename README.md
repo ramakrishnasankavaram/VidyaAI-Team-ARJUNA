@@ -6,7 +6,7 @@
 Design and develop an AI-powered, multilingual, and inclusive web platform to provide personalized education, mentorship, and learning support to underprivileged (BPL) students enrolled in government schools across India. The system should align with the National Education Policy (NEP) and offer dynamic, interactive, and accessible learning experiences using cutting-edge AI technologies. 
 
 
-## 📘 Problem Description
+## 📘Description
 This project is an intelligent educational web platform designed to revolutionize how students learn and practice academic subjects. It integrates AI capabilities to offer personalized learning experiences through curated YouTube playlists, multilingual teacher assistance, interactive quizzes, and even playful engagement through AI-powered games.
 
 ## Our Ideas and Solution
