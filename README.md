@@ -38,7 +38,7 @@ To overcome the challenges We are going to develop a comprehensive web platform 
 
 ---
 
-## 🛠 Tech Stack
+## 🛠 Tech Stack Used
 
 - *Frontend* : HTML, CSS, JavaScript, Bootstrap  
 - *Backend* : Python, Flask, Sqlite3
