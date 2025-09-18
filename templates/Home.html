@@ -7,6 +7,176 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     
     <style>
+        body {
+            background: linear-gradient(120deg, #f8fafc 0%, #e3f0ff 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .hero-section {
+            position: relative;
+            background: url('static/images/poormain.jpeg') center/cover no-repeat;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 64, 128, 0.6);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            text-align: center;
+        }
+         .hero-content h1 {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+        .hero-content p {
+            font-size: 1.3em;
+            margin-bottom: 18px;
+        }
+        .highlight-login {
+            background: linear-gradient(90deg, #ff9800 0%, #ff6b6b 100%);
+            color: white;
+            padding: 18px 0;
+            margin: 30px auto 10px auto;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px rgba(255, 107, 107, 0.18);
+            font-size: 1.7em;
+            width: 80%;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 1px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,107,107,0.3);}
+            70% { box-shadow: 0 0 0 12px rgba(255,107,107,0);}
+            100% { box-shadow: 0 0 0 0 rgba(255,107,107,0);}
+        }
+        .features-row {
+            display: flex;
+            /* flex-wrap: wrap;
+            justify-content: center; */
+            gap: 24px;
+            margin: 30px 0;
+            grid-template-columns: repeat(3, 1fr); 
+        }
+
+        /* Quiz question card styling */
+        .quiz-question-card {
+            background: #f4f8ff;
+            border-radius: 10px;
+            padding: 18px 16px 10px 16px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+        }
+
+        .quiz-question-card b {
+            color: #34558e;
+            font-size: 1.08em;
+        }
+
+        .quiz-options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quiz-option-label {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 7px;
+            padding: 7px 12px;
+            cursor: pointer;
+            border: 1.5px solid #e3eafc;
+            transition: border-color 0.2s, background 0.2s;
+            font-size: 1em;
+            user-select: none;
+        }
+
+        .quiz-option-label:hover, .quiz-option-label input:focus + span {
+            border-color: #34558e;
+            background: #e3f0ff;
+        }
+
+        .quiz-option-label input[type="radio"] {
+            accent-color: #34558e;
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+        }
+    
+        .feature-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(0,64,128,0.08);
+            padding: 28px 22px;
+            width: 270px;
+            transition: transform 0.2s;
+            text-align: center;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 8px 24px rgba(255,107,107,0.12);
+        }
+        .feature-card i {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+            color: #ff6b6b;
+        }
+
+
+        h2, h3, h4 {
+            color: #004080;
+        }
+        .mission-section {
+            background: linear-gradient(90deg, #e3f0ff 0%, #f8fafc 100%);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 30px 0;
+            box-shadow: 0 2px 12px rgba(0,64,128,0.06);
+        }
+        .cta-section {
+            background: #59708d;
+            color: #fff;
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+            font-size: 1.3em;
+            margin: 32px 0;
+            box-shadow: 0 2px 12px rgba(255,107,107,0.10);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #004080;
+            color: white;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        .highlight-login {
+        background: linear-gradient(90deg, #ff9800 0%, #ff6b6b 100%);
+        color: white;
+        padding: 16px 0;
+        margin: 20px auto;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(255, 107, 107, 0.15);
+        font-size: 1.5em;
+        width: 80%;
+        text-align: center;
+        font-weight: bold;
+        letter-spacing: 1px;
+        }
         /* Quiz Icon Styling */
         .quiz-icon {
             position: fixed;
@@ -98,6 +268,51 @@
             align-items: center;
             font-weight: bold;
         }
+        /* Quiz Icon Styling */
+        .quiz-icon {
+            position: fixed;
+            bottom: 180px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .quiz-icon:hover {
+            transform: scale(1.1);
+            background-color: #ff5252;
+        }
+
+        .quiz-icon i {
+            font-size: 28px;
+        }
+
+        /* Quiz notification badge */
+        .quiz-notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -105,21 +320,38 @@
         <h1><img src="static/images/vidyaailogo.jpg" alt="" style="width: 30px; height: 30px; border-radius: 100px;"> <a href="/Home" style="color: white;">VidyaAI++</a></h1>
         <ul>
             <li><a href="/Home"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="/mentors"><i class="fas fa-chalkboard-teacher"></i> Mentors</a></li>
-            <li><a href="/relatedvideos"><i class="fas fa-video"></i> Courses</a></li>
-            <li><a href="/aboutus"><i class="fas fa-info-circle"></i> About us</a></li>
-            <li><a href="/contactus"><i class="fas fa-envelope"></i> Contact Us</a></li>
-            <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
-            <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            {% if session.user %}
+                <li><a href="/mentors"><i class="fas fa-chalkboard-teacher"></i> Mentors</a></li>
+                <li><a href="/relatedvideos"><i class="fas fa-video"></i> Courses</a></li>
+                <li><a href="/aboutus"><i class="fas fa-info-circle"></i> About us</a></li>
+                <li><a href="/contactus"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            {% else %}
+                <li><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                <li><a href="/signup"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+            {% endif %}
         </ul>
     </nav>
-    
-    <div class="home-container">
-        <h3 style="text-align: center;">Welcome to VidyaAI++: Revolutionizing Education for Underprivileged Students</h3>
-        <pre>"Education is the most powerful weapon which you can use to change the world." – Nelson Mandela
+    <!-- Hero Section -->
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 style="color: #e3f0ff;">VidyaAI++</h1>
+            <p style="color: #e3f0ff;">Revolutionizing Education for Underprivileged Students</p>
+            <pre style="background: none; color: #ffffff; font-size: 1.1em; border: none;">"Education is the most powerful weapon which you can use to change the world." – Nelson Mandela</pre>
+        </div>
+    </div>
 
-        VidyAI++ ensures this weapon is in everyone's hands.</pre>
-        <h4>Empowering BPL Government School Students with AI-Powered, Multilingual Education</h4>
+
+    </div>
+    <div class="home-container">
+        <h1 style="text-align: center;">Welcome to VidyaAI++: Revolutionizing Education for Underprivileged Students</h1>
+        <h3 style="text-align: center;">Empowering BPL Government School Students with AI-Powered, Multilingual Education</h3>
+        {% if not session.user %}
+            <h3 class="highlight-login">Login To access the features</h3>
+        {% endif %}
         <p> 
             At VidyaAI++, we believe that every child deserves access to quality education, regardless of their background or literacy level. Our platform leverages cutting-edge AI technology to offer personalized learning experiences, helping students from underprivileged backgrounds break the barriers of traditional education.
         </p>
@@ -139,55 +371,45 @@
         </div>
 
         <br>
-        <h3 style="text-align: center;">What you can do here:</h3>
-        <div class="image-row">
-            <div class="image-container">
-                <img src="static/images/poor4.jpeg" alt="Feature 2" class="image">
-                
-            </div>
+       
+
+        <h1 style="text-align: center;">What you can do here:</h1>
         
-        </div>
-        <ul>
-            <li>📚 Learn in Your Language</li>
-            <p>Access personalized educational content and video playlists in your native language for better understanding.</p>
-            <li>🤖 Chat with Our AI Tutor</li>
-            <p>Get instant help and explanations from our integrated multilingual chatbot—your personal study buddy.</p>
-            <li>🎯 Track Your Learning</li>
-            <p>Stay on top of your progress with a dedicated dashboard showing your achievements, time spent, and topic-wise performance heatmaps.</p>
-            <li>🧑‍🏫 Connect with Mentors</li>
-            <p>Find the right mentor based on your interests and learning style. Get guidance and motivation when you need it most.</p>
-            <li>🧩 Test Your Knowledge</li>
-            <p>Challenge yourself with interactive quizzes that adapt to your learning level and help reinforce what you've learned.</p>
-            <li>🎮 Learn Through Games</li>
-            <p>Make learning fun with our educational games that help strengthen concepts while having fun!</p>
-        </ul>
-        <br>
-        <h3 style="text-align: center;">Why Choose VidyaAI++?</h3>
-        <div class="image-row">
-            <div class="image-container">
-                <img src="static/images/poor5.jpeg" alt="Feature 1" class="image">
-                
+        <div class="features-row">
+            <div class="feature-card">
+                <i class="fas fa-language"></i>
+                <h4>Learn in Your Language</h4>
+                <p>Access personalized educational content and video playlists in your native language for better understanding.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <h4>Chat with Our AI Tutor</h4>
+                <p>Get instant help and explanations from our integrated multilingual chatbot—your personal study buddy.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h4>Track Your Learning</h4>
+                <p>Stay on top of your progress with a dedicated dashboard showing your achievements and performance.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h4>Connect with Mentors</h4>
+                <p>Find the right mentor based on your interests and learning style. Get guidance and motivation when you need it most.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-question-circle"></i>
+                <h4>Test Your Knowledge</h4>
+                <p>Challenge yourself with interactive quizzes that adapt to your learning level and help reinforce what you've learned.</p>
             </div>
         </div>
-        <p>In a world rapidly embracing technology, many children from underprivileged backgrounds are still deprived of basic learning opportunities. VidyAI++ is built with a single mission — to democratize education using AI, ensuring every child, regardless of their location, language, or literacy level, has the chance to learn and grow.</p>
-        <p>🗣️ Multilingual Learning Support : 
-            India is diverse in culture and language, yet most learning platforms cater only to English-speaking students. VidyAI++ breaks this barrier by offering content and tutoring in regional languages, allowing students to learn comfortably in their mother tongue.
-        </p>
-        <p>
-            🤖 AI-Powered Personalized Tutoring
-            Every student is unique. Our AI system analyzes learning styles, pace, performance, and emotional feedback to deliver adaptive learning content tailored to each child — helping them learn at their own speed, with maximum retention.
-        </p>
-        <p>
-            🎓 Smart Mentorship Matching
-VidyAI++ connects students with the most relevant mentors based on subject interest, learning needs, and availability, creating a human touch in a digital ecosystem. It fosters a bond of trust and guidance that many government school students lack.
-        </p>
-        <p>
-            
-        </p>
         <br>
-        <h3 style="text-align: center;">Our Mission</h3>
+
+        <h1 style="text-align: center;">Why Choose VidyaAI++?</h1>
         <div class="image-row">
             <div class="image-container">
+                <img src="static/images/poor5.jpeg" alt="Why Choose" class="image">
+            </div>
+             <div class="image-container">
                 <img src="static/images/poor6.jpeg" alt="Feature 1" class="image">
                 
             </div>
@@ -195,76 +417,153 @@ VidyAI++ connects students with the most relevant mentors based on subject inter
                 <img src="static/images/poor7.jpeg" alt="Feature 2" class="image">
                 
             </div>
-        
         </div>
+        <p style="text-align: center;">
+            In a world rapidly embracing technology, many children from underprivileged backgrounds are still deprived of basic learning opportunities. VidyaAI++ is built with a single mission — to democratize education using AI, ensuring every child, regardless of their location, language, or literacy level, has the chance to learn and grow.
+        </p>
+        <p style="text-align: center;">
+            🗣️ <b>Multilingual Learning Support:</b> VidyaAI++ breaks language barriers by offering content and tutoring in regional languages.
+        </p>
+        <p style="text-align: center;">
+            🤖 <b>AI-Powered Personalized Tutoring:</b> Our AI system delivers adaptive learning content tailored to each child.
+        </p>
+        <p style="text-align: center;">
+            🎓 <b>Smart Mentorship Matching:</b> Connects students with relevant mentors for guidance and motivation.
+        </p>
+        <br><br>
+        <h1 style="text-align: center;">Our Mission</h1>
+        <div class="mission-section">
         <p>
             VidyaAI++ aims to create an inclusive, multilingual AI-powered tutoring and mentorship platform that caters to the unique needs of BPL government school students. We combine AI-driven learning, multilingual support, emotion-tracking features, mentor matchmaking, and gamified learning to offer a holistic educational experience. By providing real-time feedback and adaptive learning paths, we make education more engaging, personalized, and effective.
         </p>
+        </div>
         <br>
-        <h3 style="text-align: center;">Join Us in Building a Brighter Future</h3>
-        <div class="image-row">
+
+       
+         <div class="cta-section">
+            <b>Join Us in Building a Brighter Future</b><br>
+            <div class="image-row">
             <div class="image-container">
                 <img src="static/images/poormain.jpeg" alt="Feature 1" class="image">
                 
             </div>
         
         </div>
-        <p>
-            At VidyaAI++, we are not just transforming education; we are enabling a new generation of learners to thrive in an ever-changing world. Help us in our mission to break the barriers of education, one student at a time.
-            Together, we can make a difference!
-        </p>
+            At VidyaAI++, we are not just transforming education; we are enabling a new generation of learners to thrive in an ever-changing world. Help us in our mission to break the barriers of education, one student at a time.<br>
+            <span style="font-size: 1.1em;">Together, we can make a difference!</span>
+        </div>
 
         <br>
         
-        <pre style="text-align: center;">Our platform is built using Python, Flask, and a variety of ML algorithms — all crafted with ❤️ by learners for learners!
+        <pre style="text-align: center;color: #004080;">Our platform is built using Python, Flask, and Gemini LLM — all crafted with ❤️ by learners for learners!
             
-            Use the navigation menu to explore predictions or learn more about the project in the About section.
+            Use the navigation menu to explore features of VidyaAi++.
         </pre>
+
+        
 
         <!-- <p style="text-align: center;">Use the navigation menu to explore predictions or learn more about the project in the About section.</p> -->
     </div>
-    
+
+    {% if session.user %}
+
     <!-- Chatbot Icon -->
-    <div class="chatbot-icon" id="chatbotIcon">
+    <div class="chatbot-icon" id="chatbotIcon" title="AI Chatbot">
         <i class="fas fa-robot"></i>
     </div>
     
     <!-- Universal Chat Icon -->
-    <div class="universal-chat-icon" id="universalChatIcon">
+    <div class="universal-chat-icon" id="universalChatIcon" title="Community Chat">
         <i class="fas fa-comments"></i>
-        <span class="chat-notification">3</span>
     </div>
     
-    <!-- Quiz Icon -->
-    <div class="quiz-icon" id="quizIcon">
+    <!-- Quiz Icon - NEW -->
+    <div class="quiz-icon" id="quizIcon" title="Quiz">
         <i class="fas fa-question-circle"></i>
-        <span class="quiz-notification">5</span>
     </div>
     
-    <!-- Games Icon - NEW -->
-    <div class="games-icon" id="gamesIcon">
+     <!-- Games Icon - NEW -->
+    <div class="games-icon" id="gamesIcon" title="Games">
         <i class="fas fa-gamepad"></i>
-        <span class="games-notification">2</span>
+    </div>
+
+    <div class="quiz-section" id="quizSection" style="display:none; padding: 20px; background: #f8fafc; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+    <h2>Quiz Time!</h2>
+    <button id="generateQuizButton" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Generate Quiz</button>
+    <div id="quizContainer" style="margin-top: 20px;"></div>
+</div>
+
+
+    <!-- Games Modal -->
+    <div id="gamesModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:#fff; border-radius:16px;width:500px; max-width:95vw; min-height:400px; margin:auto; box-shadow:0 8px 32px rgba(44,62,80,0.18); padding:32px 24px; position:relative;">
+        <button id="closeGamesModal" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:1.3em; color:#888; cursor:pointer;"><i class="fas fa-times"></i></button>
+        <h2 style="margin-bottom:16px;">Play a Game!</h2>
+        <div id="gamesMenu">
+        <button onclick="showGame('rps')" style="margin:8px;">Rock Paper Scissors</button>
+        <button onclick="showGame('guess')" style="margin:8px;">Number Guess</button>
+        <button onclick="showGame('coin')" style="margin:8px;">Coin Game</button>
+        <button onclick="showGame('math')" style="margin:8px;">Math Game</button>
+        </div>
+        <div id="gameArea" style="margin-top:18px;"></div>
+    </div>
+    </div>
+
+    <!-- Chatbot Container -->
+    <!-- ...existing code... -->
+<div class="chatbot-container" id="chatbotContainer"
+     style="display:none; position:fixed; bottom:30px; right:30px; width:1100px; max-width:95vw; height:600px; background:#fff; border-radius:16px; box-shadow:0 8px 32px rgba(44,62,80,0.18); z-index:1001;flex-direction:column; font-size:15px;">
+    
+    <!-- Header -->
+    <div class="chatbot-header"
+         style="background:#34558e; color:#fff; padding:10px 16px; border-radius:16px 16px 0 0; display:flex; align-items:center; justify-content:space-between; flex-shrink:0;">
+        <span style="font-size:1em;">VidyaAI++ Assistant</span>
+        <button class="close-btn" id="closeChatbot"
+                style="background:none; border:none; color:#fff; font-size:1.1em; cursor:pointer;">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
     
-    <!-- Chatbot Container -->
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header">
-            <span>VidyaAI++ Assistant</span>
-            <button class="close-btn" id="closeChatbot"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="chatbot-content">
-            <div class="chatbot-placeholder">
-                <img src="{{ url_for('static', filename='images/vidyaailogo.jpg') }}" alt="VidyaAI Logo" class="chatbot-logo">
-                <h2>Welcome to VidyaAI++ Assistant</h2>
-                <p>Your AI-powered education companion is here to help you learn better.</p>
-                <p>Click the button below to start your personalized learning experience:</p>
-                <a href="https://huggingface.co/spaces/SwamiSivaRamaRaju/VidyaA-ChatBot" target="_blank" class="chatbot-button">
-                    Launch AI Tutor <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
+    <!-- Language Selection -->
+    <div style="padding:8px 12px; background:#fff; border-bottom:1px solid #e2e8f0; flex-shrink:0;">
+        <label for="chatbotLang" style="font-size:0.93em; color:#34558e;">Select Language:</label>
+        <select id="chatbotLang"
+                style="margin-left:8px; border-radius:6px; border:1px solid #cbd5e0; padding:2px 8px; font-size:0.95em;">
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Telugu">Telugu</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Kannada">Kannada</option>
+        </select>
+    </div>
+    
+    <!-- Messages Area -->
+    <div class="chatbot-messages" id="chatbotMessages"
+         style="flex:1; overflow-y:auto; padding:12px; background:#f8fafc;">
+        <div class="chatbot-message bot"
+             style="margin-bottom:16px; display:flex; align-items:flex-start;">
+            <img src="{{ url_for('static', filename='images/vidyaailogo.jpg') }}"
+                 alt="VidyaAI Logo" class="chatbot-logo"
+                 style="width:24px; height:24px; border-radius:50%; flex-shrink:0;">
+            <span
+                style="margin-left:8px; background:#e3f0ff; padding:8px 12px; border-radius:14px; color:#34558e; max-width:calc(100% - 40px); display:inline-block; font-size:0.97em; word-wrap:break-word;">
+                Hi! I am your VidyaAI++ Assistant. How can I help you today?
+            </span>
         </div>
     </div>
+    
+    <!-- Input Area - Fixed at Bottom -->
+    <div class="chatbot-input-area"
+         style="display:flex; gap:8px; padding:12px; background:#fff; border-top:1px solid #e2e8f0; border-radius:0 0 16px 16px; flex-shrink:0;">
+        <input type="text" id="chatbotInput" placeholder="Type your question..."
+               style="flex:1; padding:10px 12px; border-radius:8px; border:1px solid #cbd5e0; font-size:0.97em; outline:none; transition:border-color 0.2s;">
+        <button id="chatbotSend"
+                style="background:#34558e; color:#fff; border:none; border-radius:8px; padding:10px 16px; font-weight:600; cursor:pointer; font-size:1em; transition:background-color 0.2s; flex-shrink:0;">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+</div>
+</div>
     
     <!-- Universal Chat Container -->
     <div class="universal-chat-container" id="universalChatContainer">
@@ -325,136 +624,436 @@ VidyAI++ connects students with the most relevant mentors based on subject inter
             <button class="send-button"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
+    <!-- Quiz Modal -->
+    <div id="quizModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:#fff; border-radius:16px;width:1100px; max-width:95vw; height:600px;margin:auto; box-shadow:0 8px 32px rgba(44,62,80,0.18); padding:32px 24px; position:relative;">
+        <button id="closeQuizModal" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:1.3em; color:#888; cursor:pointer;"><i class="fas fa-times"></i></button>
+        <div id="quizSetupSection">
+            <h2 style="margin-bottom:12px;">Generate a Quiz</h2>
+            <label>Topic: <input type="text" id="quizTopic" value="Math" style="margin-bottom:8px; width:80%;"></label><br>
+            <label>Difficulty:
+                <select id="quizDifficulty">
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                </select>
+            </label><br>
+            <label>Language:
+                <select id="quizLanguage">
+                    <option>English</option>
+                    <option>Hindi</option>
+                    <option>Telugu</option>
+                    <option>Tamil</option>
+                    <option>Kannada</option>
+                </select>
+            </label><br>
+            <label>No. of Questions:
+                <input type="number" id="quizNumQuestions" min="1" max="10" value="5" style="width:60px;">
+            </label><br>
+            <button id="startQuizBtn" style="margin-top:16px; background:#4CAF50; color:#fff; border:none; border-radius:6px; padding:8px 20px; font-size:1em; cursor:pointer;">Generate Quiz</button>
+            <div id="quizLoading" style="margin-top:10px; color:#34558e; display:none;"><i class="fas fa-spinner fa-spin"></i> Generating quiz...</div>
+            <div id="quizError" style="color:#c00; margin-top:10px;"></div>
+        </div>
+      <form id="quizForm" style="display:none; width:100%; height:100%; max-width:none; max-height:none; box-sizing:border-box; padding:0; margin:0; display:flex; flex-direction:column; justify-content:space-between;">
+            <div id="quizQuestions" style="flex:1 1 auto; max-height:420px; overflow-y:auto; padding:0 8px 0 0; margin-bottom:12px; background:#f8fafc; border-radius:8px;"></div>
+            <div style="display:flex; justify-content:center; align-items:center; flex-shrink:0;">
+                <button type="submit" style="margin-top:0; background:#34558e; color:#fff; border:none; border-radius:6px; padding:10px 28px; font-size:1.1em; cursor:pointer;">Submit Quiz</button>
+            </div>
+        </form>
+        <div id="quizResult" style="display:none; text-align:center; margin-top:18px;"></div>
+    </div>
+</div>
 
     <!-- Overlay background -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Updated Script Section with Games functionality -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const chatbotIcon = document.getElementById('chatbotIcon');
-            const chatbotContainer = document.getElementById('chatbotContainer');
-            const closeChatbot = document.getElementById('closeChatbot');
-            const universalChatIcon = document.getElementById('universalChatIcon');
-            const universalChatContainer = document.getElementById('universalChatContainer');
-            const closeUniversalChat = document.getElementById('closeUniversalChat');
-            const quizIcon = document.getElementById('quizIcon');
-            const gamesIcon = document.getElementById('gamesIcon'); // New games icon
-            const overlay = document.getElementById('overlay');
-            const chatInput = document.querySelector('.chat-input');
-            const sendButton = document.querySelector('.send-button');
-            
-            // Chatbot icon click event
-            chatbotIcon.addEventListener('click', function() {
-                chatbotContainer.classList.add('show');
-                universalChatContainer.classList.remove('show');
-                overlay.classList.add('active');
-            });
-            
-            closeChatbot.addEventListener('click', function() {
-                chatbotContainer.classList.remove('show');
-                overlay.classList.remove('active');
-            });
-            
-            // Universal chat icon click event
-            universalChatIcon.addEventListener('click', function() {
-                console.log('Universal chat icon clicked');
-                universalChatContainer.classList.add('show');
-                chatbotContainer.classList.remove('show');
-                overlay.classList.add('active');
-                // Remove notification when user opens chat
-                const notification = document.querySelector('.chat-notification');
-                if (notification) {
-                    notification.style.display = 'none';
-                }
-            });
-            
-            closeUniversalChat.addEventListener('click', function() {
-                universalChatContainer.classList.remove('show');
-                overlay.classList.remove('active');
-            });
-            
-            // Quiz icon click event
-            quizIcon.addEventListener('click', function() {
-                console.log('Quiz icon clicked');
-                // Navigate to the HuggingFace quiz space
-                window.open('https://huggingface.co/spaces/sana000dasaradha/quiz', '_blank');
-                // Remove the quiz notification badge
-                const quizNotification = document.querySelector('.quiz-notification');
-                if (quizNotification) {
-                    quizNotification.style.display = 'none';
-                }
-            });
-            
-            // Games icon click event - NEW
-            gamesIcon.addEventListener('click', function() {
-                console.log('Games icon clicked');
-                // Navigate to the games site
-                window.open('https://huggingface.co/spaces/SwamiSivaRamaRaju/PlayWithAI', '_blank');
-                // Remove the games notification badge
-                const gamesNotification = document.querySelector('.games-notification');
-                if (gamesNotification) {
-                    gamesNotification.style.display = 'none';
-                }
-            });
-            
-            overlay.addEventListener('click', function() {
-                chatbotContainer.classList.remove('show');
-                universalChatContainer.classList.remove('show');
-                overlay.classList.remove('active');
-            });
-            
-            // Send message functionality
-            function sendMessage() {
-                const messageText = chatInput.value.trim();
-                if (messageText !== '') {
-                    const chatMessages = document.querySelector('.chat-messages');
-                    const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                    
-                    const messageHTML = `
-                        <div class="message sent">
-                            <div class="message-content">
-                                <div class="message-header">
-                                    <span class="message-author">You</span>
-                                    <span class="message-time">${currentTime}</span>
-                                </div>
-                                <p>${messageText}</p>
-                            </div>
+    <!-- Updated Script Section with Quiz functionality -->
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Chatbot
+    const chatbotIcon = document.getElementById('chatbotIcon');
+    const chatbotContainer = document.getElementById('chatbotContainer');
+    const closeChatbot = document.getElementById('closeChatbot');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSend = document.getElementById('chatbotSend');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const chatbotLang = document.getElementById('chatbotLang');
+
+    // Universal Chat
+    const universalChatIcon = document.getElementById('universalChatIcon');
+    const universalChatContainer = document.getElementById('universalChatContainer');
+    const closeUniversalChat = document.getElementById('closeUniversalChat');
+    const chatInput = document.querySelector('.chat-input');
+    const sendButton = document.querySelector('.send-button');
+
+    // Quiz
+    const quizIcon = document.getElementById('quizIcon');
+    const quizModal = document.getElementById('quizModal');
+    const closeQuizModal = document.getElementById('closeQuizModal');
+    const quizSetupSection = document.getElementById('quizSetupSection');
+    const startQuizBtn = document.getElementById('startQuizBtn');
+    const quizLoading = document.getElementById('quizLoading');
+    const quizError = document.getElementById('quizError');
+    const quizForm = document.getElementById('quizForm');
+    const quizQuestionsDiv = document.getElementById('quizQuestions');
+    const quizResult = document.getElementById('quizResult');
+    let quizQuestions = [];
+
+    // Games 
+    const gamesIcon = document.getElementById('gamesIcon');
+    const gamesModal = document.getElementById('gamesModal');
+    const closeGamesModal = document.getElementById('closeGamesModal');
+    const gamesMenu = document.getElementById('gamesMenu');
+    const gameArea = document.getElementById('gameArea');
+
+
+    // Overlay
+    const overlay = document.getElementById('overlay');
+
+    // Chatbot show/hide
+    if (chatbotIcon) {
+        chatbotIcon.addEventListener('click', function() {
+            chatbotContainer.style.display = 'flex';
+            overlay.classList.add('active');
+        });
+    }
+    if (closeChatbot) {
+        closeChatbot.addEventListener('click', function() {
+            chatbotContainer.style.display = 'none';
+            overlay.classList.remove('active');
+        });
+    }
+
+    // Overlay click closes modals
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            chatbotContainer.style.display = 'none';
+            universalChatContainer.classList.remove('show');
+            overlay.classList.remove('active');
+        });
+    }
+
+    // Chatbot send
+    function appendMessage(text, sender = 'user') {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'chatbot-message ' + (sender === 'bot' ? 'bot' : 'user');
+        msgDiv.style.display = 'flex';
+        msgDiv.style.alignItems = 'flex-start';
+        msgDiv.style.marginBottom = '10px';
+        if (sender === 'bot') {
+            msgDiv.innerHTML = `<img src="{{ url_for('static', filename='images/vidyaailogo.jpg') }}" alt="VidyaAI Logo" class="chatbot-logo" style="width:28px;height:28px;border-radius:50%;vertical-align:middle;">
+            <span style="margin-left:10px; background:#e3f0ff; padding:8px 14px; border-radius:16px; color:#34558e; max-width:220px; display:inline-block;">${text}</span>`;
+        } else {
+            msgDiv.innerHTML = `<span style="background:#ffecd2;padding:8px 14px;border-radius:16px;display:inline-block;float:right; color:#222; margin-left:auto; max-width:220px;">${text}</span>`;
+        }
+        chatbotMessages.appendChild(msgDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function sendChatbotMessage() {
+        const userMsg = chatbotInput.value.trim();
+        const lang = chatbotLang.value;
+        if (!userMsg) return;
+        appendMessage(userMsg, 'user');
+        chatbotInput.value = '';
+        appendMessage('<i class="fas fa-spinner fa-spin"></i> Thinking...', 'bot');
+        fetch('/chatbot', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({message: userMsg, language: lang})
+        })
+        .then(res => res.json())
+        .then(data => {
+            const loading = chatbotMessages.querySelector('.bot:last-child');
+            if (loading) loading.remove();
+            appendMessage(data.reply, 'bot');
+        })
+        .catch(() => {
+            const loading = chatbotMessages.querySelector('.bot:last-child');
+            if (loading) loading.remove();
+            appendMessage("Sorry, I couldn't connect to the AI. Please try again.", 'bot');
+        });
+    }
+
+    if (chatbotSend) chatbotSend.addEventListener('click', sendChatbotMessage);
+    if (chatbotInput) chatbotInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') sendChatbotMessage();
+    });
+
+    // Universal chat show/hide
+    if (universalChatIcon) {
+        universalChatIcon.addEventListener('click', function() {
+            universalChatContainer.classList.add('show');
+            chatbotContainer.style.display = 'none';
+            overlay.classList.add('active');
+        });
+    }
+    if (closeUniversalChat) {
+        closeUniversalChat.addEventListener('click', function() {
+            universalChatContainer.classList.remove('show');
+            overlay.classList.remove('active');
+        });
+    }
+
+    // Universal chat send
+    function sendMessage() {
+        const messageText = chatInput.value.trim();
+        if (messageText !== '') {
+            const chatMessages = document.querySelector('.chat-messages');
+            const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const messageHTML = `
+                <div class="message sent">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author">You</span>
+                            <span class="message-time">${currentTime}</span>
                         </div>
-                    `;
-                    
-                    chatMessages.insertAdjacentHTML('beforeend', messageHTML);
-                    chatInput.value = '';
-                    
-                    // Scroll to the bottom of chat
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                        <p>${messageText}</p>
+                    </div>
+                </div>
+            `;
+            chatMessages.insertAdjacentHTML('beforeend', messageHTML);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    }
+    if (sendButton) sendButton.addEventListener('click', sendMessage);
+    if (chatInput) chatInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') sendMessage();
+    });
+
+    // User list interaction
+    const chatUsers = document.querySelectorAll('.chat-user');
+    chatUsers.forEach(user => {
+        user.addEventListener('click', function() {
+            chatUsers.forEach(u => u.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+
+    // Quiz Modal
+    if (quizIcon) {
+        quizIcon.addEventListener('click', function() {
+            quizModal.style.display = 'flex';
+            quizSetupSection.style.display = 'block';
+            quizForm.style.display = 'none';
+            quizResult.style.display = 'none';
+            quizError.textContent = '';
+        });
+    }
+    if (closeQuizModal) {
+        closeQuizModal.addEventListener('click', function() {
+            quizModal.style.display = 'none';
+            quizLoading.style.display = 'none';
+        });
+    }
+
+    // Generate Quiz
+    if (startQuizBtn) {
+        startQuizBtn.addEventListener('click', function() {
+            const topic = document.getElementById('quizTopic').value || 'General Knowledge';
+            const difficulty = document.getElementById('quizDifficulty').value;
+            const language = document.getElementById('quizLanguage').value;
+            const num_questions = document.getElementById('quizNumQuestions').value || 5;
+
+            quizLoading.style.display = 'block';
+            quizError.textContent = '';
+            quizQuestionsDiv.innerHTML = '';
+            quizForm.style.display = 'none';
+            quizResult.style.display = 'none';
+
+            fetch('/generate-quiz', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({topic, difficulty, language, num_questions})
+            })
+            .then(res => res.json())
+            .then(data => {
+                quizLoading.style.display = 'none';
+                if (!data.questions || !Array.isArray(data.questions) || data.questions.length === 0) {
+                    quizError.textContent = "Quiz generation failed. Please try again.";
+                    return;
                 }
-            }
-            
-            if (sendButton) {
-                sendButton.addEventListener('click', sendMessage);
-            }
-            
-            if (chatInput) {
-                chatInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        sendMessage();
-                    }
+                quizQuestions = data.questions;
+                quizQuestionsDiv.innerHTML = '';
+                quizQuestions.forEach((q, idx) => {
+                    const qDiv = document.createElement('div');
+                    qDiv.className = 'quiz-question-card';
+                    qDiv.innerHTML = `<b>Q${idx+1}:</b> ${q.text}`;
+                    const optionsGroup = document.createElement('div');
+                    optionsGroup.className = 'quiz-options-group';
+                    q.options.forEach((opt, oidx) => {
+                        const optId = `q${idx}_opt${oidx}`;
+                        const label = document.createElement('label');
+                        label.className = 'quiz-option-label';
+                        label.setAttribute('for', optId);
+                        label.innerHTML = `
+                            <input type="radio" name="q${idx}" value="${opt}" id="${optId}" required>
+                            <span>${opt}</span>
+                        `;
+                        optionsGroup.appendChild(label);
+                    });
+                    qDiv.appendChild(optionsGroup);
+                    quizQuestionsDiv.appendChild(qDiv);
                 });
-            }
-            
-            // User list interaction
-            const chatUsers = document.querySelectorAll('.chat-user');
-            chatUsers.forEach(user => {
-                user.addEventListener('click', function() {
-                    // Here you would typically load chat history with this specific user
-                    // For demo, we'll just highlight the selected user
-                    chatUsers.forEach(u => u.classList.remove('selected'));
-                    this.classList.add('selected');
-                });
+                quizSetupSection.style.display = 'none';
+                quizForm.style.display = 'block';
+            })
+            .catch(() => {
+                quizLoading.style.display = 'none';
+                quizError.textContent = "Quiz generation failed. Please try again.";
             });
         });
-    </script>
+    }
+
+    // Evaluate Quiz
+    if (quizForm) {
+        quizForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let score = 0;
+            let total = quizQuestions.length;
+            for (let i = 0; i < total; i++) {
+                const selected = quizForm.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value.trim() === quizQuestions[i].answer.trim()) {
+                    score++;
+                }
+            }
+            let feedback = '';
+            const percent = (score / total) * 100;
+            if (percent === 100) feedback = "Excellent! You got all answers correct!";
+            else if (percent >= 80) feedback = "Great job! Just a little more practice.";
+            else if (percent >= 50) feedback = "Not bad, but you can improve. Review the material and try again!";
+            else feedback = "Keep practicing! Don't give up, learning takes time.";
+
+            quizForm.style.display = 'none';
+            quizResult.style.display = 'block';
+            quizResult.innerHTML = `<h3>Your Score: ${score} / ${total}</h3><p>${feedback}</p>
+                <button onclick="document.getElementById('quizModal').style.display='none';" style="margin-top:12px; background:#4CAF50; color:#fff; border:none; border-radius:6px; padding:8px 20px; font-size:1em; cursor:pointer;">Close</button>`;
+        });
+    }
+
+    if (gamesIcon) {
+    gamesIcon.addEventListener('click', function() {
+        gamesModal.style.display = 'flex';
+        gamesMenu.style.display = 'block';
+        gameArea.innerHTML = '';
+    });
+    }
+    if (closeGamesModal) {
+        closeGamesModal.addEventListener('click', function() {
+            gamesModal.style.display = 'none';
+            gameArea.innerHTML = '';
+        });
+    }
+
+    // Simple Rock Paper Scissors
+    window.showGame=function showGame(game) {
+        gamesMenu.style.display = 'none';
+        if (game === 'rps') {
+            gameArea.innerHTML = `
+                <h3>Rock Paper Scissors</h3>
+                <div>
+                    <button onclick="playRPS('Rock')">Rock</button>
+                    <button onclick="playRPS('Paper')">Paper</button>
+                    <button onclick="playRPS('Scissors')">Scissors</button>
+                </div>
+                <div id="rpsResult" style="margin-top:16px;"></div>
+                <button onclick="backToGamesMenu()" style="margin-top:20px;">Back</button>
+            `;
+        } else if (game === 'guess') {
+            window.secretNumber = Math.floor(Math.random() * 10) + 1;
+            gameArea.innerHTML = `
+                <h3>Number Guess (1-10)</h3>
+                <input type="number" id="guessInput" min="1" max="10" style="width:60px;">
+                <button onclick="checkGuess()">Guess</button>
+                <div id="guessResult" style="margin-top:16px;"></div>
+                <button onclick="backToGamesMenu()" style="margin-top:20px;">Back</button>
+            `;
+        } else if (game === 'coin') {
+        gameArea.innerHTML = `
+            <h3>Coin Toss</h3>
+            <div style="display: flex; gap: 32px; align-items: center; margin-bottom: 10px;">
+                <label style="display: flex; align-items: center; font-size: 1.1em; cursor: pointer;">
+                    <input type="radio" name="coinChoice" value="Heads" checked style="margin-right: 8px;"> Heads
+                </label>
+                <label style="display: flex; align-items: center; font-size: 1.1em; cursor: pointer;">
+                    <input type="radio" name="coinChoice" value="Tails" style="margin-right: 8px;"> Tails
+                </label>
+            </div>
+            <button onclick="tossCoin()" style="margin-top:10px;">Toss Coin</button>
+            <div id="coinResult" style="margin-top:16px;"></div>
+            <button onclick="backToGamesMenu()" style="margin-top:20px;">Back</button>
+        `;
+        } else if (game === 'math') {
+            // Generate a simple math question
+            const a = Math.floor(Math.random() * 20) + 1;
+            const b = Math.floor(Math.random() * 20) + 1;
+            window.mathAnswer = a + b;
+            gameArea.innerHTML = `
+                <h3>Math Quiz</h3>
+                <div>What is <b>${a} + ${b}</b>?</div>
+                <input type="number" id="mathInput" style="width:80px;">
+                <button onclick="checkMath()">Check</button>
+                <div id="mathResult" style="margin-top:16px;"></div>
+                <button onclick="backToGamesMenu()" style="margin-top:20px;">Back</button>
+            `;
+        }
+    }
+
+    window.playRPS = function(userChoice) {
+        const choices = ['Rock', 'Paper', 'Scissors'];
+        const aiChoice = choices[Math.floor(Math.random() * 3)];
+        let result = '';
+        if (userChoice === aiChoice) result = "It's a draw!";
+        else if (
+            (userChoice === 'Rock' && aiChoice === 'Scissors') ||
+            (userChoice === 'Paper' && aiChoice === 'Rock') ||
+            (userChoice === 'Scissors' && aiChoice === 'Paper')
+        ) result = "You win!";
+        else result = "You lose!";
+        document.getElementById('rpsResult').innerHTML = `You: <b>${userChoice}</b> <br>AI: <b>${aiChoice}</b><br><b>${result}</b>`;
+    };
+
+    window.checkGuess = function() {
+        const guess = parseInt(document.getElementById('guessInput').value, 10);
+        if (guess === window.secretNumber) {
+            document.getElementById('guessResult').innerHTML = "🎉 Correct! You guessed the number!";
+        } else if (guess < window.secretNumber) {
+            document.getElementById('guessResult').innerHTML = "Too low! Try again.";
+        } else {
+            document.getElementById('guessResult').innerHTML = "Too high! Try again.";
+        }
+    };
+
+    window.tossCoin = function() {
+    const userChoice = document.querySelector('input[name="coinChoice"]:checked').value;
+    const result = Math.random() < 0.5 ? "Heads" : "Tails";
+    let message = `<b>Coin: ${result}</b><br>`;
+    if (userChoice === result) {
+        message += `<span style="color:green;">🎉 You won the toss!</span>`;
+    } else {
+        message += `<span style="color:red;">You lost the toss. Try again!</span>`;
+    }
+    document.getElementById('coinResult').innerHTML = message;
+};
+
+    window.checkMath = function() {
+        const userAns = parseInt(document.getElementById('mathInput').value, 10);
+        if (userAns === window.mathAnswer) {
+            document.getElementById('mathResult').innerHTML = "🎉 Correct!";
+        } else {
+            document.getElementById('mathResult').innerHTML = "❌ Try again!";
+    }
+    };
+
+    window.backToGamesMenu = function() {
+        gamesMenu.style.display = 'block';
+        gameArea.innerHTML = '';
+    };
+    });
+</script>
+    {% endif %}
+    
     <footer style="text-align: center; padding: 20px; background-color: #004080; color: white;">
         &copy; 2025 VidyaAI++. Built with ❤️ by Team ARJUNA.
     </footer>
