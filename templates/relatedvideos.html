@@ -8,34 +8,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-    --primary-color: #004080;
-    --primary-hover: #0066cc;
-    --primary-light: #e6f0ff;
-    --secondary-color: #2e86de;
-    --text-color: #333;
-    --text-light: #666;
-    --border-color: #dbe0e5;
-    --success-color: #28a745;
-    --error-color: #d32f2f;
-    --info-color: #0288d1;
-    --warning-color: #f57c00;
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
-    --border-radius-sm: 4px;
-    --border-radius: 8px;
-    --border-radius-lg: 12px;
-    --transition: all 0.3s ease;
-  }
-  body {
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    margin: 0;
-    background-color: #f9f9f9;
-    color: var(--text-color);
-    line-height: 1.6;
-  }
-        
-                /* Navigation */
+            --primary-color: #004080;
+            --primary-hover: #0066cc;
+            --primary-light: #e6f0ff;
+            --secondary-color: #2e86de;
+            --text-color: #333;
+            --text-light: #666;
+            --border-color: #dbe0e5;
+            --success-color: #28a745;
+            --error-color: #d32f2f;
+            --info-color: #0288d1;
+            --warning-color: #f57c00;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
         nav {
             background-color: var(--primary-color);
             padding: 1rem 2rem;
@@ -48,7 +46,6 @@
             top: 0;
             z-index: 100;
         }
-        
         nav h1 {
             display: flex;
             align-items: center;
@@ -57,7 +54,6 @@
             font-size: 1.5rem;
             color: white;
         }
-        
         nav ul {
             list-style: none;
             display: flex;
@@ -65,7 +61,6 @@
             margin: 0;
             padding: 0;
         }
-        
         nav ul li a {
             color: white;
             font-size: 1rem;
@@ -74,7 +69,6 @@
             padding: 0.5rem 0;
             position: relative;
         }
-        
         nav ul li a::after {
             content: '';
             position: absolute;
@@ -85,77 +79,42 @@
             background-color: white;
             transition: var(--transition);
         }
-        
         nav ul li a:hover::after {
             width: 100%;
         }
-        
-        
-        /* Containers */
-  .container, .content {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-  }
-        
-        /* Typography */
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-color);
-    margin-top: 0;
-    font-weight: 600;
-    line-height: 1.3;
-  }
-  
-  p {
-    line-height: 1.6;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-  }
-  
-  a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: var(--transition);
-  }
-  
-  a:hover {
-    color: var(--primary-hover);
-  }
-        
-        .video-link {
-            display: inline-block;
-            background-color: #004080;
-            color: white;
-            padding: 15px 30px;
+        .container, .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        p {
+            line-height: 1.6;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+        a {
+            color: var(--primary-color);
             text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            box-shadow: 0 4px 12px rgba(0, 64, 128, 0.2);
+            transition: var(--transition);
         }
-        
-        .video-link:hover {
-            background-color: #00adcc;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
+        a:hover {
+            color: var(--primary-hover);
         }
-        
-        .video-icon {
-            margin-right: 10px;
-        }
-        
         .features {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
             margin: 40px 0;
         }
-        
         .feature {
             flex: 1;
             min-width: 200px;
@@ -166,23 +125,142 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
         }
-        
         .feature:hover {
             transform: translateY(-5px);
         }
-        
         .feature i {
             font-size: 36px;
             color: #004080;
             margin-bottom: 15px;
         }
-        
         .feature h3 {
             color: #004080;
             margin-bottom: 10px;
         }
-        
-        /* Code learning section */
+        .input-container {
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            padding: 15px;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+        .input-container label {
+            font-weight: 500;
+            margin-top: 10px;
+            display: block;
+        }
+        .input-container select, .input-container option {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+        }
+        .input-container .subjects-select {
+            width: 100%;
+            min-height: 40px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .input-container .custom-subjects {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .results-wrapper {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+        .subject-section {
+            margin-bottom: 40px;
+            padding: 25px 10px 10px 10px;
+            background: var(--primary-light);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        .subject-section h3 {
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        .category-title {
+            text-align: center;
+            color: #2791ae;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            font-size: 1.9rem;
+            font-weight: 600;
+        }
+        .playlist-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .playlist-item, .video-item {
+            flex: 1 1 300px;
+            max-width: 320px;
+            min-width: 250px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s;
+        }
+        .playlist-item:hover, .video-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .playlist-item img, .video-item img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            max-height: 150px;
+            margin-bottom: 10px;
+        }
+        .video-title {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 16px;
+            text-align: center;
+            min-height: 40px;
+        }
+        .video-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .playlist-item a, .video-item a {
+            width: 100%;
+            border-radius: 20px;
+            background-color: #00b3ff;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px 0;
+            margin-top: 8px;
+            display: block;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .playlist-item a:hover, .video-item a:hover {
+            background-color: #c00;
+        }
         .code-learning {
             margin-top: 40px;
             padding: 25px;
@@ -190,7 +268,6 @@
             border-radius: 12px;
             border-left: 5px solid #004080;
         }
-        
         .code-button {
             display: inline-block;
             background-color: #004080;
@@ -204,24 +281,29 @@
             margin-top: 15px;
             box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
         }
-        
         .code-button:hover {
             background-color: #2791ae;
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(46, 204, 113, 0.3);
             color: white;
         }
-        
         .code-icon {
             margin-right: 10px;
         }
-        
+        @media (max-width: 900px) {
+            .playlist-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .playlist-item, .video-item {
+                max-width: 100%;
+            }
+        }
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
                 margin: 20px;
             }
-            
             .features {
                 flex-direction: column;
             }
@@ -241,11 +323,9 @@
             <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </nav>
-    
     <div class="container">
         <h2>Find Courses on any Topic!</h2>
-        <p>Enhance your learning experience with our AI-powered video recommendation tool. Simply enter your topic of interest, and our system will suggest the most relevant educational videos to support your studies.</p>
-        
+        <p>Enhance your learning experience with our AI-powered video recommendation tool. Enter your topic of interest, and our system will suggest the most relevant educational videos to support your studies.</p>
         <div class="features">
             <div class="feature">
                 <i class="fas fa-search"></i>
@@ -263,12 +343,56 @@
                 <p>Interface designed with students' needs in mind</p>
             </div>
         </div>
-        
-        <a href="https://huggingface.co/spaces/sana000dasaradha/youtube_playlist_suggester" class="video-link" target="_blank">
-            <i class="fas fa-play-circle video-icon"></i>
-            Access Courses Here!
-        </a>
-        
+        <!-- Streamlit-like UI -->
+        <div class="input-container">
+            <h2 >🧠 Select your preferences and get curated playlists!</h2>
+            <label for="class-level">Choose your class</label>
+            <select id="class-level">
+                <option>Nursery</option>
+                <option>LKG</option>
+                <option>UKG</option>
+                <option>Class 1</option>
+                <option>Class 2</option>
+                <option>Class 3</option>
+                <option>Class 4</option>
+                <option>Class 5</option>
+                <option>Class 6</option>
+                <option>Class 7</option>
+                <option>Class 8</option>
+                <option>Class 9</option>
+                <option>Class 10</option>
+                <option>Class 11</option>
+                <option>Class 12</option>
+            </select>
+            <label for="language">Preferred Language</label>
+            <select id="language">
+                <option value="English">English</option>
+                <option value="Telugu">Telugu</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Tamil">Tamil</option>
+                <option value="Marathi">Marathi</option>
+                <option value="Bengali">Bengali</option>
+                <option value="Kannada">Kannada</option>
+                <option value="Malayalam">Malayalam</option>
+                <option value="Gujarati">Gujarati</option>
+                <option value="Punjabi">Punjabi</option>
+            </select>
+            <label for="subjects">Select subjects</label>
+            <select id="subjects" class="subjects-select">
+                <option>Math</option>
+                <option>Science</option>
+                <option>Social Studies</option>
+                <option>English</option>
+                <option>Telugu</option>
+                <option>Hindi</option>
+                <option>Tamil</option>
+            </select>
+            <label for="custom-subjects">Or enter your own subject/topic</label>
+            <input type="text" id="custom-subjects" class="custom-subjects" placeholder="Type your subject or topic here (comma separated for multiple)">
+            <button id="search-btn" style="width:100%;margin-top:10px;padding:10px 0;background:#004080;color:white;border:none;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;">Get Videos</button>
+        </div>
+        <div id="results" class="results-wrapper"></div>
+        <!-- End Streamlit-like UI -->
         <!-- New Code Learning Section -->
         <div class="code-learning">
             <h2><i class="fas fa-code"></i> Learning to Code?</h2>
@@ -279,10 +403,133 @@
             </a>
         </div>
     </div>
-    
-    <!-- Chatbot Icon (Keeping for consistency with your other pages) -->
+    <!-- Chatbot Icon -->
     <div class="chatbot-icon">
         <i class="fas fa-robot"></i>
     </div>
+    <script>
+        const API_KEY = "AIzaSyDCnoMg7wuUv-jFtccwgS2aFlCBYBptSYU"; // <-- Replace with your API key
+
+        document.getElementById('search-btn').addEventListener('click', async function() {
+            const classLevel = document.getElementById('class-level').value;
+            const language = document.getElementById('language').value;
+            const subjectsSelect = document.getElementById('subjects');
+            const selectedSubjects = Array.from(subjectsSelect.selectedOptions).map(opt => opt.value);
+
+            // Get custom subjects from input, split by comma, trim whitespace, filter empty
+            const customSubjectsInput = document.getElementById('custom-subjects').value;
+            let customSubjects = [];
+            if (customSubjectsInput.trim() !== "") {
+                customSubjects = customSubjectsInput.split(',').map(s => s.trim()).filter(s => s.length > 0);
+            }
+
+            // Combine all subjects
+            const allSubjects = [...selectedSubjects, ...customSubjects];
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = "";
+
+            if (allSubjects.length === 0) {
+                resultsDiv.innerHTML = "<p style='color:red;text-align:center;'>Please select or enter at least one subject.</p>";
+                return;
+            }
+
+            resultsDiv.innerHTML = `<h2 style="text-align:center;margin-bottom:30px;">🎞 Recommended Playlists & Videos</h2>`;
+
+            for (const subject of allSubjects) {
+                // Query includes language for subject-specific recommendations
+                const query = `${classLevel} ${subject} ${language}`;
+                const playlistUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=playlist&maxResults=10&q=${encodeURIComponent(query + " playlist")}&key=${API_KEY}`;
+                const videoUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&q=${encodeURIComponent(query + " tutorial")}&key=${API_KEY}`;
+
+                let playlists = [];
+                let videos = [];
+
+                // Fetch playlists
+                try {
+                    const resp = await fetch(playlistUrl);
+                    const data = await resp.json();
+                    if (data.items) {
+                        playlists = data.items.map(item => ({
+                            title: item.snippet.title,
+                            channel: item.snippet.channelTitle,
+                            playlist_id: item.id.playlistId,
+                            thumbnail: item.snippet.thumbnails.high.url
+                        }));
+                    }
+                } catch (e) {
+                    resultsDiv.innerHTML += `<div class="subject-section"><h3 style="color:#d32f2f;text-align:center;">${subject} Playlists</h3><p style='color:red;text-align:center;'>Error fetching playlists for ${subject}.</p></div>`;
+                }
+
+                // Fetch videos
+                try {
+                    const resp = await fetch(videoUrl);
+                    const data = await resp.json();
+                    if (data.items) {
+                        videos = data.items.map(item => ({
+                            title: item.snippet.title,
+                            channel: item.snippet.channelTitle,
+                            video_id: item.id.videoId,
+                            thumbnail: item.snippet.thumbnails.high.url
+                        }));
+                    }
+                } catch (e) {
+                    resultsDiv.innerHTML += `<div class="subject-section"><h3 style="color:#d32f2f;text-align:center;">${subject} Videos</h3><p style='color:red;text-align:center;'>Error fetching videos for ${subject}.</p></div>`;
+                }
+
+                // Ensure at least 6 playlists and 6 videos (fill with more if available)
+                const playlistItems = playlists.slice(0, 6);
+                const videoItems = videos.slice(0, 6);
+
+                resultsDiv.innerHTML += `
+                    <div class="subject-section">
+                        <h3 style="text-align:center;color:#004080;margin-bottom:18px;">${subject} Recommendations (${language})</h3>
+                        <div class="category-title"><i class="fas fa-list"></i> Playlists</div>
+                        <div class="playlist-row" id="playlist-row-${subject.replace(/\s+/g,'-')}"></div>
+                        <div class="category-title"><i class="fas fa-video"></i> Videos</div>
+                        <div class="playlist-row" id="video-row-${subject.replace(/\s+/g,'-')}"></div>
+                    </div>
+                `;
+
+                // Render playlists
+                const playlistRowDiv = document.getElementById(`playlist-row-${subject.replace(/\s+/g,'-')}`);
+                if (playlistItems.length > 0) {
+                    playlistItems.forEach(item => {
+                        playlistRowDiv.innerHTML += `
+                            <div class="playlist-item">
+                                <a href="https://www.youtube.com/playlist?list=${item.playlist_id}" target="_blank">
+                                    <img src="${item.thumbnail}" alt="${item.title}">
+                                </a>
+                                <div class="video-title">${item.title}</div>
+                                <div class="video-meta">📺 ${item.channel}</div>
+                                <a href="https://www.youtube.com/playlist?list=${item.playlist_id}" target="_blank">📂 Open Playlist</a>
+                            </div>
+                        `;
+                    });
+                } else {
+                    playlistRowDiv.innerHTML = `<p style='color:#666;text-align:center;width:100%;'>No playlists found for ${subject}.</p>`;
+                }
+
+                // Render videos
+                const videoRowDiv = document.getElementById(`video-row-${subject.replace(/\s+/g,'-')}`);
+                if (videoItems.length > 0) {
+                    videoItems.forEach(item => {
+                        videoRowDiv.innerHTML += `
+                            <div class="video-item">
+                                <a href="https://www.youtube.com/watch?v=${item.video_id}" target="_blank">
+                                    <img src="${item.thumbnail}" alt="${item.title}">
+                                </a>
+                                <div class="video-title">${item.title}</div>
+                                <div class="video-meta">📺 ${item.channel}</div>
+                                <a href="https://www.youtube.com/watch?v=${item.video_id}" target="_blank">▶️ Watch Video</a>
+                            </div>
+                        `;
+                    });
+                } else {
+                    videoRowDiv.innerHTML = `<p style='color:#666;text-align:center;width:100%;'>No videos found for ${subject}.</p>`;
+                }
+            }
+        });
+    </script>
 </body>
 </html>
