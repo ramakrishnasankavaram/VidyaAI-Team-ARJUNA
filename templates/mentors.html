@@ -2,185 +2,455 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>VidyaAi++</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>VidyaAI++ | Mentors</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        /* Base Styles */
+:root {
+    --primary-color: #004080;
+    --primary-hover: #0066cc;
+    --primary-light: #e6f0ff;
+    --secondary-color: #2e86de;
+    --text-color: #333;
+    --text-light: #666;
+    --border-color: #dbe0e5;
+    --success-color: #28a745;
+    --error-color: #d32f2f;
+    --info-color: #0288d1;
+    --warning-color: #f57c00;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+    --border-radius-sm: 4px;
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    --transition: all 0.3s ease;
+  }
+  
+  body {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  p {
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  a:hover {
+    color: var(--primary-hover);
+  }
+  
+  /* Code Blocks */
+  pre {
+    background-color: #f8fafc;
+    border-left: 5px solid var(--primary-color);
+    padding: 1.25rem;
+    font-size: 14px;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    color: var(--text-color);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border-radius: var(--border-radius);
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  /* Navigation */
+  nav {
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  nav h1 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li a {
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+  }
+  
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transition: var(--transition);
+  }
+  
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+        .mentors-header {
+            text-align: center;
+            margin: 2.5rem 0 1.5rem 0;
+        }
+        .mentors-header h2 {
+            font-size: 2.2rem;
+            color: #1a237e;
+            margin-bottom: 0.5rem;
+        }
+        .mentors-header p {
+            color: #444;
+            font-size: 1.1rem;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        .team-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .team-member {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(30, 42, 120, 0.08);
+            padding: 2rem 1.2rem 1.5rem 1.2rem;
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+            position: relative;
+        }
+        .team-member:hover {
+            box-shadow: 0 8px 32px rgba(30, 42, 120, 0.16);
+            transform: translateY(-4px) scale(1.03);
+        }
+        .team-member img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #1a237e;
+            margin-bottom: 1rem;
+        }
+        .team-member p {
+            margin: 0.3rem 0;
+            color: #333;
+            font-size: 1rem;
+        }
+        .team-member p:first-of-type {
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: #1a237e;
+        }
+        .mentor-contact {
+            margin-top: 0.7rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+        .mentor-contact a {
+            color: #1a237e;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .mentor-contact a:hover {
+            color: #ffd600;
+        }
+        @media (max-width: 700px) {
+            .team-row {
+                grid-template-columns: 1fr;
+                padding: 0 0.5rem 2rem 0.5rem;
+            }
+            nav ul {
+                gap: 0.7rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <h1><img src="static/images/vidyaailogo.jpg" alt="" style="width: 30px; height: 30px; border-radius: 100px;"> <a href="/Home" style="color: white;">VidyaAI++</a></h1>
-    <ul>
-        <li><a href="/Home"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="/mentors"><i class="fas fa-chalkboard-teacher"></i> Mentors</a></li>
-        <li><a href="/relatedvideos"><i class="fas fa-video"></i> Courses</a></li>
-        <li><a href="/aboutus"><i class="fas fa-info-circle"></i> About us</a></li>
-        <li><a href="/contactus"><i class="fas fa-envelope"></i> Contact Us</a></li>
-        <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
-        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-    </ul>
+<nav>
+        <h1><img src="static/images/vidyaailogo.jpg" alt="" style="width: 30px; height: 30px; border-radius: 100px;"> <a href="/Home" style="color: white;">VidyaAI++</a></h1>
+        <ul>
+            <li><a href="/Home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/mentors"><i class="fas fa-chalkboard-teacher"></i> Mentors</a></li>
+                <li><a href="/relatedvideos"><i class="fas fa-video"></i> Courses</a></li>
+                <li><a href="/aboutus"><i class="fas fa-info-circle"></i> About us</a></li>
+                <li><a href="/contactus"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                <li><a href="/profile"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
 </nav>
 
-    <div class="team-row">
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Mentor 1">
-          <p>Ravi Kumar</p>
-          <p>Email: ravi.kumar@example.com</p>
-          <p>Phone: +91-9876543210</p>
-          <p>Subject: Mathematics</p>
-          <p>Job: Senior Math Instructor</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Mentor 2">
-          <p>Neha Sharma</p>
-          <p>Email: neha.sharma@example.com</p>
-          <p>Phone: +91-9821345678</p>
-          <p>Subject: English</p>
-          <p>Job: Language Trainer</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="Mentor 3">
-          <p>Arun Mehta</p>
-          <p>Email: arun.mehta@example.com</p>
-          <p>Phone: +91-9765432109</p>
-          <p>Subject: Science</p>
-          <p>Job: Science Educator</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Mentor 4">
-          <p>Priya Das</p>
-          <p>Email: priya.das@example.com</p>
-          <p>Phone: +91-9812312345</p>
-          <p>Subject: History</p>
-          <p>Job: Social Studies Mentor</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Mentor 5">
-          <p>Amit Rathi</p>
-          <p>Email: amit.rathi@example.com</p>
-          <p>Phone: +91-9812333455</p>
-          <p>Subject: Physics</p>
-          <p>Job: Physics Lecturer</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Mentor 6">
-          <p>Anjali Verma</p>
-          <p>Email: anjali.verma@example.com</p>
-          <p>Phone: +91-9887766554</p>
-          <p>Subject: Chemistry</p>
-          <p>Job: Chemistry Coach</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Mentor 7">
-          <p>Rahul Bansal</p>
-          <p>Email: rahul.bansal@example.com</p>
-          <p>Phone: +91-9898123456</p>
-          <p>Subject: Geography</p>
-          <p>Job: Geography Teacher</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/women/24.jpg" alt="Mentor 8">
-          <p>Sunita Nair</p>
-          <p>Email: sunita.nair@example.com</p>
-          <p>Phone: +91-9811223344</p>
-          <p>Subject: Economics</p>
-          <p>Job: Economics Analyst</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/men/25.jpg" alt="Mentor 9">
-          <p>Manish Kapoor</p>
-          <p>Email: manish.kapoor@example.com</p>
-          <p>Phone: +91-9800012345</p>
-          <p>Subject: Biology</p>
-          <p>Job: Biology Instructor</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/women/26.jpg" alt="Mentor 10">
-          <p>Ritika Jain</p>
-          <p>Email: ritika.jain@example.com</p>
-          <p>Phone: +91-9871123344</p>
-          <p>Subject: Computer Science</p>
-          <p>Job: Coding Mentor</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/men/27.jpg" alt="Mentor 11">
-          <p>Deepak Singh</p>
-          <p>Email: deepak.singh@example.com</p>
-          <p>Phone: +91-9834567890</p>
-          <p>Subject: Environmental Science</p>
-          <p>Job: Eco Science Educator</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Mentor 12">
-          <p>Sneha Reddy</p>
-          <p>Email: sneha.reddy@example.com</p>
-          <p>Phone: +91-9845671234</p>
-          <p>Subject: Political Science</p>
-          <p>Job: Civics Teacher</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="Mentor 13">
-          <p>Kunal Bhatt</p>
-          <p>Email: kunal.bhatt@example.com</p>
-          <p>Phone: +91-9823456781</p>
-          <p>Subject: Hindi</p>
-          <p>Job: Hindi Language Instructor</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="Mentor 14">
-          <p>Divya Kulkarni</p>
-          <p>Email: divya.kulkarni@example.com</p>
-          <p>Phone: +91-9810098723</p>
-          <p>Subject: Art</p>
-          <p>Job: Visual Arts Mentor</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Mentor 15">
-          <p>Siddharth Rao</p>
-          <p>Email: siddharth.rao@example.com</p>
-          <p>Phone: +91-9876540098</p>
-          <p>Subject: Computer Applications</p>
-          <p>Job: Software Developer</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Mentor 16">
-          <p>Kavita Joshi</p>
-          <p>Email: kavita.joshi@example.com</p>
-          <p>Phone: +91-9821348765</p>
-          <p>Subject: Music</p>
-          <p>Job: Music Teacher</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/men/35.jpg" alt="Mentor 17">
-          <p>Nikhil Arora</p>
-          <p>Email: nikhil.arora@example.com</p>
-          <p>Phone: +91-9809876543</p>
-          <p>Subject: Physical Education</p>
-          <p>Job: PE Trainer</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/women/36.jpg" alt="Mentor 18">
-          <p>Meena Iyer</p>
-          <p>Email: meena.iyer@example.com</p>
-          <p>Phone: +91-9845112233</p>
-          <p>Subject: Psychology</p>
-          <p>Job: School Counselor</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/men/37.jpg" alt="Mentor 19">
-          <p>Harsh Vardhan</p>
-          <p>Email: harsh.vardhan@example.com</p>
-          <p>Phone: +91-9798791234</p>
-          <p>Subject: Philosophy</p>
-          <p>Job: Philosophy Lecturer</p>
-        </div>
-        <div class="team-member">
-          <img src="https://randomuser.me/api/portraits/women/38.jpg" alt="Mentor 20">
-          <p>Lakshmi Menon</p>
-          <p>Email: lakshmi.menon@example.com</p>
-          <p>Phone: +91-9771234567</p>
-          <p>Subject: Business Studies</p>
-          <p>Job: Business Educator</p>
-        </div>
-      </div>
+<div class="mentors-header">
+    <h2>Meet Our Expert Mentors</h2>
+    <p>
+        Our dedicated mentors are here to guide you in every subject. If you have doubts or need academic support, feel free to contact your subject mentor directly via email or phone. Your learning journey is our priority!
+    </p>
+</div>
 
+<div class="team-row">
+    <!-- Mentor 1 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="Ravi Kumar">
+        <p>Ravi Kumar</p>
+        <p><i class="fas fa-book"></i> Mathematics</p>
+        <p><i class="fas fa-briefcase"></i> Senior Math Instructor</p>
+        <div class="mentor-contact">
+            <a href="mailto:ravi.kumar@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919876543210" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 2 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Neha Sharma">
+        <p>Neha Sharma</p>
+        <p><i class="fas fa-book"></i> English</p>
+        <p><i class="fas fa-briefcase"></i> Language Trainer</p>
+        <div class="mentor-contact">
+            <a href="mailto:neha.sharma@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919821345678" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 3 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="Arun Mehta">
+        <p>Arun Mehta</p>
+        <p><i class="fas fa-book"></i> Science</p>
+        <p><i class="fas fa-briefcase"></i> Science Educator</p>
+        <div class="mentor-contact">
+            <a href="mailto:arun.mehta@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919765432109" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 4 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/41.jpg" alt="Priya Das">
+        <p>Priya Das</p>
+        <p><i class="fas fa-book"></i> History</p>
+        <p><i class="fas fa-briefcase"></i> Social Studies Mentor</p>
+        <div class="mentor-contact">
+            <a href="mailto:priya.das@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919812312345" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 5 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Amit Rathi">
+        <p>Amit Rathi</p>
+        <p><i class="fas fa-book"></i> Physics</p>
+        <p><i class="fas fa-briefcase"></i> Physics Lecturer</p>
+        <div class="mentor-contact">
+            <a href="mailto:amit.rathi@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919812333455" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 6 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Anjali Verma">
+        <p>Anjali Verma</p>
+        <p><i class="fas fa-book"></i> Chemistry</p>
+        <p><i class="fas fa-briefcase"></i> Chemistry Coach</p>
+        <div class="mentor-contact">
+            <a href="mailto:anjali.verma@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919887766554" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 7 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Rahul Bansal">
+        <p>Rahul Bansal</p>
+        <p><i class="fas fa-book"></i> Geography</p>
+        <p><i class="fas fa-briefcase"></i> Geography Teacher</p>
+        <div class="mentor-contact">
+            <a href="mailto:rahul.bansal@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919898123456" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 8 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/24.jpg" alt="Sunita Nair">
+        <p>Sunita Nair</p>
+        <p><i class="fas fa-book"></i> Economics</p>
+        <p><i class="fas fa-briefcase"></i> Economics Analyst</p>
+        <div class="mentor-contact">
+            <a href="mailto:sunita.nair@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919811223344" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 9 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/25.jpg" alt="Manish Kapoor">
+        <p>Manish Kapoor</p>
+        <p><i class="fas fa-book"></i> Biology</p>
+        <p><i class="fas fa-briefcase"></i> Biology Instructor</p>
+        <div class="mentor-contact">
+            <a href="mailto:manish.kapoor@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919800012345" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 10 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/26.jpg" alt="Ritika Jain">
+        <p>Ritika Jain</p>
+        <p><i class="fas fa-book"></i> Computer Science</p>
+        <p><i class="fas fa-briefcase"></i> Coding Mentor</p>
+        <div class="mentor-contact">
+            <a href="mailto:ritika.jain@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919871123344" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 11 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/27.jpg" alt="Deepak Singh">
+        <p>Deepak Singh</p>
+        <p><i class="fas fa-book"></i> Environmental Science</p>
+        <p><i class="fas fa-briefcase"></i> Eco Science Educator</p>
+        <div class="mentor-contact">
+            <a href="mailto:deepak.singh@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919834567890" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 12 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Sneha Reddy">
+        <p>Sneha Reddy</p>
+        <p><i class="fas fa-book"></i> Political Science</p>
+        <p><i class="fas fa-briefcase"></i> Civics Teacher</p>
+        <div class="mentor-contact">
+            <a href="mailto:sneha.reddy@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919845671234" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 13 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="Kunal Bhatt">
+        <p>Kunal Bhatt</p>
+        <p><i class="fas fa-book"></i> Hindi</p>
+        <p><i class="fas fa-briefcase"></i> Hindi Language Instructor</p>
+        <div class="mentor-contact">
+            <a href="mailto:kunal.bhatt@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919823456781" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 14 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="Divya Kulkarni">
+        <p>Divya Kulkarni</p>
+        <p><i class="fas fa-book"></i> Art</p>
+        <p><i class="fas fa-briefcase"></i> Visual Arts Mentor</p>
+        <div class="mentor-contact">
+            <a href="mailto:divya.kulkarni@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919810098723" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 15 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Siddharth Rao">
+        <p>Siddharth Rao</p>
+        <p><i class="fas fa-book"></i> Computer Applications</p>
+        <p><i class="fas fa-briefcase"></i> Software Developer</p>
+        <div class="mentor-contact">
+            <a href="mailto:siddharth.rao@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919876540098" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 16 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Kavita Joshi">
+        <p>Kavita Joshi</p>
+        <p><i class="fas fa-book"></i> Music</p>
+        <p><i class="fas fa-briefcase"></i> Music Teacher</p>
+        <div class="mentor-contact">
+            <a href="mailto:kavita.joshi@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919821348765" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 17 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/35.jpg" alt="Nikhil Arora">
+        <p>Nikhil Arora</p>
+        <p><i class="fas fa-book"></i> Physical Education</p>
+        <p><i class="fas fa-briefcase"></i> PE Trainer</p>
+        <div class="mentor-contact">
+            <a href="mailto:nikhil.arora@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919809876543" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 18 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/36.jpg" alt="Meena Iyer">
+        <p>Meena Iyer</p>
+        <p><i class="fas fa-book"></i> Psychology</p>
+        <p><i class="fas fa-briefcase"></i> School Counselor</p>
+        <div class="mentor-contact">
+            <a href="mailto:meena.iyer@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919845112233" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 19 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/men/37.jpg" alt="Harsh Vardhan">
+        <p>Harsh Vardhan</p>
+        <p><i class="fas fa-book"></i> Philosophy</p>
+        <p><i class="fas fa-briefcase"></i> Philosophy Lecturer</p>
+        <div class="mentor-contact">
+            <a href="mailto:harsh.vardhan@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919798791234" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+    <!-- Mentor 20 -->
+    <div class="team-member">
+        <img src="https://randomuser.me/api/portraits/women/38.jpg" alt="Lakshmi Menon">
+        <p>Lakshmi Menon</p>
+        <p><i class="fas fa-book"></i> Business Studies</p>
+        <p><i class="fas fa-briefcase"></i> Business Educator</p>
+        <div class="mentor-contact">
+            <a href="mailto:lakshmi.menon@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+919771234567" title="Call"><i class="fas fa-phone"></i></a>
+        </div>
+    </div>
+</div>
 </body>
+</html>
